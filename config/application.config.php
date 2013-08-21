@@ -8,6 +8,10 @@
 return array(
     'modules' => array(
         'Application',
+        'Test',
+        'ZfcBase',
+        'ZfcUser',
+        'ZfcAdmin'
         ),
     'module_listener_options' => array(
         'module_paths' => array(

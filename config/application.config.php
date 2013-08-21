@@ -8,12 +8,6 @@
 return array(
     'modules' => array(
         'Application',
-        'Album',
-        'Test',
-        'ZfcAdmin',
-        'ZfcBase',
-        'ZfcUser',
-        'Phone'
         ),
     'module_listener_options' => array(
         'module_paths' => array(

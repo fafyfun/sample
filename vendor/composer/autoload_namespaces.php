@@ -11,4 +11,5 @@ return array(
     'ZfcAdmin' => array($vendorDir . '/zf-commons/zfc-admin/src'),
     'Zend\\' => array($vendorDir . '/zendframework/zendframework/library'),
     'ZFTool\\' => array($vendorDir . '/zendframework/zftool/src'),
+    'BjyAuthorize\\' => array($vendorDir . '/bjyoungblood/bjy-authorize/src'),
 );

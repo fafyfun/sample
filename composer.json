@@ -13,6 +13,7 @@
         "zendframework/zftool": "dev-master",
         "zendframework/zend-form": "2.2.2",
         "zf-commons/zfc-admin": "0.0.1",
-        "zf-commons/zfc-user": "dev-master"
+        "zf-commons/zfc-user": "dev-master",
+        "bjyoungblood/bjy-authorize": "dev-master"
     }
 }

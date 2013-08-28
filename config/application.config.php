@@ -12,7 +12,8 @@ return array(
         'ZfcAdmin',
         'ZfcBase',
         'ZfcUser',
-        'BjyAuthorize'
+        'BjyAuthorize',
+        'Inventry'
         ),
     'module_listener_options' => array(
         'module_paths' => array(

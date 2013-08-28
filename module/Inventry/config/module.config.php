@@ -2,21 +2,21 @@
 return array(
     'controllers' => array(
         'invokables' => array(
-            'Test\Controller\Test' => 'Test\Controller\IndexController',
+            'Inventry\Controller\Inventry' => 'Inventry\Controller\InventryController',
         ),
     ),
     'router' => array(
         'routes' => array(
-            'test' => array(
+            'inventry' => array(
                 'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/test[/][:action][/:id]',
+                    'route'    => '/inventry[/][:action][/:id]',
                     'constraints' => array(
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ),
                     'defaults' => array(
-                        'controller' => 'Test\Controller\Test',
+                        'controller' => 'Inventry\Controller\Inventry',
                         'action'     => 'index',
                     ),
                 ),
@@ -28,6 +28,4 @@ return array(
         'template_path_stack'=> array(__DIR__.'/../view')
     )
 
-
 );
-

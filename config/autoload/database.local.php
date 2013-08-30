@@ -7,7 +7,7 @@
  */
 
 $dbParams = array(
-    'database'  => 'dgadmin_db',
+    'database'  => 'sample',
     'username'  => 'root',
     'password'  => 'root',
     'hostname'  => 'localhost',

@@ -10,10 +10,14 @@ namespace Inventry\Controller;
 
 
 use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
 
 class InventryController extends AbstractActionController {
 
+    protected $productTable;
+
     public function indexAction(){
+        return new ViewModel(array('product'=>$this->getProduct()->fetchAll()));
 
     }
     public function addAction(){
@@ -23,6 +27,16 @@ class InventryController extends AbstractActionController {
 
     }
     public function deleteAction(){
+
+    }
+
+    public function getProduct(){
+
+        if(!$this->productTable){
+            $sm = $this->getServiceLocator();
+            $this->productTable = $sm->get('Inventry\Model\ProductTable');
+        }
+        return $this->productTable;
 
     }
 

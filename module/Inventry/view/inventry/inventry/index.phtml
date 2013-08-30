@@ -1,0 +1,33 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: indika
+ * Date: 8/28/13
+ * Time: 3:22 PM
+ */
+$title = 'My albums';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('inventry', array('action'=>'add'));?>">Add new album</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Product</th>
+        <th>Description</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($product as $product) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($product->product_name);?></td>
+            <td><?php echo $this->escapeHtml($product->product_description);?></td>
+            <td>
+                <a href="<?php echo $this->url('inventry',
+array('action'=>'edit', 'id' => $product->product_id));?>">Edit</a>
+                <a href="<?php echo $this->url('inventry',
+array('product'=>'delete', 'id' => $product->product_id));?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

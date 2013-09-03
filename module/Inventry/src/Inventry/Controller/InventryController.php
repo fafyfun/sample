@@ -24,43 +24,28 @@ class InventryController extends AbstractActionController {
     }
     public function addAction(){
 
+
+
         $form = new InventryFrom();
-        $form->get('submit')->setValue('Add');
-
-        //$request = $this->getRequest();
-/*        if ($request->isPost()) {
-            $album = new Product();
-            $form->setInputFilter($album->getInputFilter());
-            $form->setData($request->getPost());
-
-/*            if ($form->isValid()) {
-                $album->exchangeArray($form->getData());
-                $this->getProduct()->saveAlbum($album);
-
-                // Redirect to list of albums
-                return $this->redirect()->toRoute('inventry');
-            }
-        }*/
-        return array('form' => $form);
-
-/*        $form = new InventryFrom();
-        $form->get('submit')->setValue('Add');
+        $form->get('submit')->setValue('Add to Inventory');
 
         $request= $this->getRequest();
 
-        if($request->isPost()){
-            $product = new Product();
-            $form->setInputFilter($product->getInputFilter());
-            $form->setData($request->getPost);
+          if($request->isPost()){
 
-            if($form->isValid()){
-                $product->exchangeArray($form->getData());
-                $this->getProduct()->saveProduct($product);
 
-                return $this->redirect()->toRoute('inventry');
-            }
-        }
-      return array('form'=>$form);*/
+             $product = new Product();
+             $form->setInputFilter($product->getInputFilter());
+           /* $form->setData($request->getPost);
+
+              if($form->isValid()){
+                  $product->exchangeArray($form->getData());
+                  $this->getProduct()->saveProduct($product);
+
+                  return $this->redirect()->toRoute('inventry');
+              }*/
+          }
+      return array('form'=>$form);
     }
     public function editAction(){
 

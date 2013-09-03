@@ -45,37 +45,6 @@ class InventryFrom extends Form {
             ),
         ));
 
- /*       $this->setAttributes('method','post');
-
-        $this->add(array(
-                'name'=>'id',
-                'type'=>'Hidden',
-            ));
-
-        $this->add(array(
-            'name'=>'product_name',
-            'type'=>'Text',
-            'option'=> array(
-                'label'=>'Name',
-            )
-        ));
-
-        $this->add(array(
-            'name'=>'product_description',
-            'type'=>'Text',
-            'option'=>array(
-                'label'=>'Description'
-            )
-        ));
-
-        $this->add(array(
-            'name'=>'submit',
-            'type'=>'Submit',
-            'attributes'=>array(
-                'value'=>'Go',
-                'id'=>'submitbutton'
-            )
-        ));*/
     }
 
 } 

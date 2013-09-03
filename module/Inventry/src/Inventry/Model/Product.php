@@ -52,15 +52,15 @@ class Product implements InputFilterAwareInterface {
             $inputFilter = new InputFilter();
             $factory = new InputFactory();
 
-            $inputFilter ->add($factory->createInput(array(
+       /*     $inputFilter ->add($factory->createInput(array(
                 'name'=>'product_id',
                 'required'=>true,
                 'filters'=>array(
                     array('name'=>'int')
                 )
-            )));
+            )));*/
 
-            $inputFilter->add($factory->createInput(array(
+           /* $inputFilter->add($factory->createInput(array(
                     'name'=>'product_name',
                     'required'=>true,
                     'filters'=>array(
@@ -77,7 +77,8 @@ class Product implements InputFilterAwareInterface {
                             )
                         )
                     )
-                ))
+                )
+                )
             );
             $inputFilter->add($factory->createInput(array(
                     'name'=>'product_description',
@@ -97,7 +98,7 @@ class Product implements InputFilterAwareInterface {
                         )
                     )
                 ))
-            );
+            );*/
 
         }
 

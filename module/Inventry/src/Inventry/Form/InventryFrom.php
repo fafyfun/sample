@@ -13,9 +13,39 @@ use Zend\Form\Form;
 
 class InventryFrom extends Form {
 
-    public function __construct(){
+    public function __construct($name = null){
+
+        // we want to ignore the name passed
         parent::__construct('inventry');
-        $this->setAttributes('method','post');
+
+        $this->add(array(
+            'name' => 'product_id',
+            'type' => 'Hidden',
+        ));
+        $this->add(array(
+            'name' => 'product_name',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Name',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'product_description',
+            'type' => 'Text',
+            'options' => array(
+                'label' => 'Description',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'submit',
+            'type' => 'Submit',
+            'attributes' => array(
+                'value' => 'Go',
+                'id' => 'submitbutton',
+            ),
+        ));
+
+ /*       $this->setAttributes('method','post');
 
         $this->add(array(
                 'name'=>'id',
@@ -45,7 +75,7 @@ class InventryFrom extends Form {
                 'value'=>'Go',
                 'id'=>'submitbutton'
             )
-        ));
+        ));*/
     }
 
 } 

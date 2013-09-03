@@ -27,7 +27,26 @@ class InventryController extends AbstractActionController {
         $form = new InventryFrom();
         $form->get('submit')->setValue('Add');
 
-        $request= $this->getProduct();
+        //$request = $this->getRequest();
+/*        if ($request->isPost()) {
+            $album = new Product();
+            $form->setInputFilter($album->getInputFilter());
+            $form->setData($request->getPost());
+
+/*            if ($form->isValid()) {
+                $album->exchangeArray($form->getData());
+                $this->getProduct()->saveAlbum($album);
+
+                // Redirect to list of albums
+                return $this->redirect()->toRoute('inventry');
+            }
+        }*/
+        return array('form' => $form);
+
+/*        $form = new InventryFrom();
+        $form->get('submit')->setValue('Add');
+
+        $request= $this->getRequest();
 
         if($request->isPost()){
             $product = new Product();
@@ -41,7 +60,7 @@ class InventryController extends AbstractActionController {
                 return $this->redirect()->toRoute('inventry');
             }
         }
-        return array('form'=>$form);
+      return array('form'=>$form);*/
     }
     public function editAction(){
 
@@ -57,7 +76,6 @@ class InventryController extends AbstractActionController {
             $this->productTable = $sm->get('Inventry\Model\ProductTable');
         }
         return $this->productTable;
-
     }
 
 } 

@@ -23,11 +23,8 @@ class InventryController extends AbstractActionController {
 
     }
     public function addAction(){
-
-
-
         $form = new InventryFrom();
-        $form->get('submit')->setValue('Add to Inventory');
+        $form->get('submit')->setValue('Add');
 
         $request= $this->getRequest();
 
@@ -36,21 +33,66 @@ class InventryController extends AbstractActionController {
 
              $product = new Product();
              $form->setInputFilter($product->getInputFilter());
-           /* $form->setData($request->getPost);
+             $form->setData($request->getPost());
 
-              if($form->isValid()){
+               if($form->isValid()){
                   $product->exchangeArray($form->getData());
                   $this->getProduct()->saveProduct($product);
 
                   return $this->redirect()->toRoute('inventry');
-              }*/
+              }
           }
       return array('form'=>$form);
     }
     public function editAction(){
 
+        $id = (int) $this->params()->fromRoute('id',0);
+        if(!$id){
+            return $this->redirect()->toRoute('inventry',array(
+                'action'=>'add'
+            ));
+        }
+
+        try{
+            $product = $this->getProduct()->getProduct($id);
+        }catch (\Exception $ex){
+            return $this->redirect()->toRoute('inventry',array(
+                'action'=>'index'
+            ));
+        }
+
+        $from = new InventryFrom();
+        print_r($product);
+        $from->bind($product);
+        $from->get('submit')->setValue('Edit');
+
+        $request = $this->getRequest();
+
+        if($request->isPost()){
+            $from->setInputFilter($product->getInputFilter());
+            $from->setData($request->isPost());
+
+            if($from->isValid()){
+                $this->getProduct()->saveProduct($product);
+                return $this->redirect()->toRoute('inventry');
+            }
+
+        }
+
+        return array(
+            'product_id'=> $id,
+            'form'=>$from
+        );
+
     }
     public function deleteAction(){
+        $id = (int) $this->params()->fromRoute('id',0);
+        if(!$id){
+            return $this->redirect()->toRoute('inventry');
+        }
+
+        $request= $this->getRequest();
+
 
     }
 

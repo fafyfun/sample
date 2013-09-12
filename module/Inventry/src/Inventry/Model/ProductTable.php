@@ -30,6 +30,8 @@ class ProductTable {
         $rowset = $this->tableGateway->select(array('product_id'=>$product_id));
         $row = $rowset->current();
 
+        //print_r($row);
+
         if (!$row){
             throw new \Exception("Could Not Find Row");
         }
@@ -48,7 +50,7 @@ class ProductTable {
             $this->tableGateway->insert($data);
         }else{
             if($this->getProduct($product_id)){
-                $this->tableGateway->update($data, array('id'=>$product_id));
+                $this->tableGateway->update($data, array('product_id'=>$product_id));
             }else{
                 throw new \Exception('Form id does not match with db');
             }
@@ -57,7 +59,7 @@ class ProductTable {
 
     public function deleteProduct($product_id){
         if($this->getProduct($product_id)){
-            $this->tableGateway->delete(array('id'=>$product_id));
+            $this->tableGateway->delete(array('product_id'=>$product_id));
         }else{
             throw new \Exception('Form id does not match with db');
         }

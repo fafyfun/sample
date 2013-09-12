@@ -22,9 +22,9 @@ class Product implements InputFilterAwareInterface {
     protected $inputFilter;
 
     public function exchangeArray($data){
-        $this->product_id = (!empty($data['id'])) ? $data['id'] :null;
-        $this->product_name = (!empty($data['name'])) ? $data['name'] :null;
-        $this->product_description = (!empty($data['description'])) ? $data['description'] :null;
+        $this->product_id = (!empty($data['product_id'])) ? $data['product_id'] :null;
+        $this->product_name = (!empty($data['product_name'])) ? $data['product_name'] :null;
+        $this->product_description = (!empty($data['product_description'])) ? $data['product_description'] :null;
 
     }
 
@@ -48,57 +48,56 @@ class Product implements InputFilterAwareInterface {
      */
     public function getInputFilter()
     {
-        if(!$this->inputFilter){
+        if (!$this->inputFilter) {
+
             $inputFilter = new InputFilter();
-            $factory = new InputFactory();
 
-       /*     $inputFilter ->add($factory->createInput(array(
-                'name'=>'product_id',
-                'required'=>true,
-                'filters'=>array(
-                    array('name'=>'int')
-                )
-            )));*/
+            $inputFilter->add(array(
+                'name'     => 'product_id',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'Int'),
+                ),
+            ));
+            $inputFilter->add(array(
+                'name'     => 'product_name',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ),
+                    ),
+                ),
+            ));
 
-           /* $inputFilter->add($factory->createInput(array(
-                    'name'=>'product_name',
-                    'required'=>true,
-                    'filters'=>array(
-                        array('name'=>'StripTags'),
-                        array('name'=>'StripTrim'),
+            $inputFilter->add(array(
+                'name'     => 'product_description',
+                'required' => true,
+                'filters'  => array(
+                    array('name' => 'StripTags'),
+                    array('name' => 'StringTrim'),
+                ),
+                'validators' => array(
+                    array(
+                        'name'    => 'StringLength',
+                        'options' => array(
+                            'encoding' => 'UTF-8',
+                            'min'      => 1,
+                            'max'      => 100,
+                        ),
                     ),
-                    'validators'=>array(
-                        array(
-                            'name'=>'StringLength',
-                            'options'=>array(
-                                'encoding' => 'UTF-8',
-                                'min'=> 1,
-                                'max'=> 100,
-                            )
-                        )
-                    )
-                )
-                )
-            );
-            $inputFilter->add($factory->createInput(array(
-                    'name'=>'product_description',
-                    'required'=>true,
-                    'filters'=>array(
-                        array('name'=>'StripTags'),
-                        array('name'=>'StripTrim'),
-                    ),
-                    'validators'=>array(
-                        array(
-                            'name'=>'StringLength',
-                            'options'=>array(
-                                'encoding' => 'UTF-8',
-                                'min'=> 1,
-                                'max'=> 100,
-                            )
-                        )
-                    )
-                ))
-            );*/
+                ),
+            ));
+
+            $this->inputFilter = $inputFilter;
 
         }
 
